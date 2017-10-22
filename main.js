@@ -1,22 +1,3 @@
-// completed problems:
-// 1. working
-// 2. working
-// 3. working
-// 4. working
-// 5. working
-// 6. working
-// 7. working
-// 8. working
-// 9. working
-// 10. working
-// 11.
-// 12.
-// 13.
-// 14.
-// 15.
-// 16.
-// 17. working
-
 
 /*
 // 1. Write a function which takes an array of numbers, and returns the largest number in that array.
@@ -158,7 +139,6 @@ var toEnglish = function(splitPigStr) {
 toEnglish(splitPigStr)
 
 
-
 // 6. Write a function which takes in two arrays and determines if they contain the same number of the same values.
 // [], [] -> true
 // [2, 3, 4], [1, 2, 3] -> false
@@ -185,6 +165,7 @@ var compareArrays = function(array1, array2) {
 }
 compareArrays(array1, array2)
 
+
 // 7. Write a function which takes in an array of numbers and a max cutoff value, and returns a new array with elements limited by the cutoff value.
 // [1,2,3,4,5,6,7,8], 4 -> [1,2,3,4,4,4,4,4]
 // [1,5,7,3,1,5,7], 3 -> [1,3,3,3,1,3,3]
@@ -208,7 +189,6 @@ newArray(testArray, 4)
 
 
 // 8. Write a function which takes no input and returns an array of 10 distinct randomly generated integers between 1 and 100.
-//
 // -> [48, 5, 32, 2, 10, 11, 34, 95, 82, 93] (good!)
 // -> [1, 1, 24, 63, 45, 84, 17, 11, 59, 13] (bad - duplicated number)
 
@@ -232,9 +212,7 @@ var distinctNumberArray = function() {
 distinctNumberArray()
 
 
-
 // 9. Write a function which takes two sorted lists and merges them into a new sorted list.
-
 // [1,2,5,6,9], [3,4,5,10] -> [1,2,3,4,5,5,6,9,10]
 // [], [] -> []
 // [-1, 0, 1], [-2, 2] -> [-2, -1, 0, 1, 2]
@@ -251,7 +229,6 @@ mergeArrays(array1, array2)
 
 
 // 10. Write a function which accepts two arrays as input. The function should remove all the items from the shorter array, and add them to the end of the longer array. If both arrays are the same length, the function should do nothing. This function does not need to return a value.
-//
 // ```javascript
 // var numbers = ['four', 'eleven']
 // var animals = ['cat', 'bat', 'dolphin']
@@ -283,40 +260,92 @@ var checkArrLen = function(arr1, arr2) {
   }
 }
 checkArrLen(array1, array2)
-*/
+
 
 // 11. Write a function that uses `Math.random()` to generate a random number between 0-1. Replace all the 3's with 8's, and replace all the 7's with 1's, then return this number. Note that this function should return a `number`, not a `string`.
 var randoNumbo = function() {
-  Math.random()
+  return Math.random()
 }
 
+var replaceNum = function() {
+  var n = randoNumbo().toString()
+  console.log('original number: ')
+  console.log(n)
+  console.log('-=-=-=-=-=-=-=-=-=-')
+  for(var i=0 ; i<n.length ; i++) {
+    if(n.search(3) || n.search(7)) {
+      n = n.replace(3, 8)
+      n = n.replace(7, 1)
+      n = Number(n)
+    } else {
+      return false
+    }
+  }
+  console.log(n)
+  console.log('modified number: ')
+}
+replaceNum()
 
-
-/*
 
 // 12. Write a function which accepts a sentence as a string, and returns the longest word in that sentence.
-//
 // 'I ate toast for breakfast' -> 'breakfast'
+var testString = 'I ate toast for breakfast'
 
-
-
+var evalElements = function(string) {
+  console.log('original string: ' + testString)
+  var splitStr = string.split(' ').sort(function(a,b){return b.length-a.length})
+  console.log('longest word in string: ' + splitStr[0])
+  return splitStr[0]
+}
+evalElements(testString)
 
 
 
 // 13. Write a function which accepts a sentence as a string. Capitalize the first letter of each word of the string, and return that.
-//
 // 'I ate toast for breakfast' -> 'I Ate Toast For Breakfast'
+var testString = 'I ate toast for breakfast'
 
-
-
-
+var capitalizeFirstLetter = function() {
+  var splitStr = testString.split(' ')
+  for(var i=0 ; i<splitStr.length ; i++) {
+    var firstLetter = splitStr[i][0].toUpperCase()
+    var restOfWord = splitStr[i].slice(1)
+    var newWord = firstLetter + restOfWord
+    var newArr = []
+    newArr.push(newWord)
+    newStr = newArr.toString(' ')
+    console.log(newStr)
+  }
+}
+capitalizeFirstLetter()
 
 
 // 14. Write a function which takes two dates as strings in the format 'YYYY/MM/DD' and returns the number of days between them.
 // '1998/01/24', '1999/01/25' -> 366
+var inpDate1 = '1998/01/24'
+var inpDate2 = '1999/01/25'
 
+var compareDates = function(d1, d2) {
+  var d1 = new Date(inpDate1)
+  var d2 = new Date(inpDate2)
+  var day = 1000*60*60*24
 
+  d1 = d1.getTime()
+  d2 = d2.getTime()
+  var diff_ms = d2-d1
 
+  if(d1 === d2) {
+    console.log(inpDate1 + ' is equal to ' + inpDate2)
+    console.log('0 days between them.')
+  } else if (d1 < d2) {
+    console.log(Math.round(diff_ms/day) + ' days between ' + inpDate1 + ' and ' + inpDate2)
+    return Math.round(diff_ms/day)
+  } else {
+    console.log(Math.round(diff_ms/day) + ' days between ' + inpDate1 + ' and ' + inpDate2)
+    return Math.round(diff_ms/day)
+  }
+}
+compareDates(inpDate1, inpDate2)
 
 
 // 15. Write a function called `add` that adds two numbers together, and returns the result. The function must be defined such that it can be called in two different ways to achieve the same result. See the example below:
@@ -325,14 +354,37 @@ var randoNumbo = function() {
 // var seven = add(5,2) // returns 7
 // seven = add(5)(2) // also returns 7
 // ```
+var add = function(x,y) {
+  return x + y
+}
 
+var addInp = function(add) {
+  add(x, y)
+}
 
+var seven = add(5,2)
+console.log(seven)
+
+// *** i couldn't get this one to work after hours and hours of trying.
 
 
 
 // 16. Write a function which takes one argument, and returns true if that argument is a whole number (a non-negative integer, e.g. 0, 1, 5, 21, 1000, etc). If the argument is negative, is a decimal number, or is not a number at all, return false.
+var testNum = -24
 
-
+var checkInt = function(num) {
+  if(num < 0) {
+    console.log('false')
+    return false
+  } else if(Number.isInteger(num)) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+}
+checkInt(testNum)
 
 
 // 17. Write a function which returns a random integer from 1 to 10.
