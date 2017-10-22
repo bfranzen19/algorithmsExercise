@@ -4,32 +4,21 @@
 // 3. working
 // 4. working
 // 5. working
-// 6.
-// 7.
-// 8.
-// 9.
-// 10.
+// 6. working
+// 7. working
+// 8. working
+// 9. working
+// 10. working
 // 11.
 // 12.
 // 13.
 // 14.
 // 15.
 // 16.
-// 17.
-
-
-
-
-
-
-
-
-
-
+// 17. working
 
 
 /*
-// *** this one works
 // 1. Write a function which takes an array of numbers, and returns the largest number in that array.
 // var testArr = [1,5,2,18]
 var testArray = [25,8,100,3,2,1]
@@ -37,7 +26,7 @@ var testArray = [25,8,100,3,2,1]
 function maxValue(arr) {
   return Math.max.apply(null, arr)
 }
-console.log(maxValue(testArray))
+maxValue(testArray)
 
 // *** this one works
 // 2. Write a function which, given a year as a number, returns whether that number is a leap year.
@@ -89,13 +78,12 @@ for(var i=0 ; i<years.length ; i++) {
 }
 
 
-//*** this is working
 // 3. Write a function which takes an array of integers > 0 and returns the first integer which does not appear in that array.
 // [1,2,5] -> 3
 // [1,2,3,4,5] -> 6
 // [3,4,5] -> 1
 
-//empty arrays
+//empty array
 var testArray = []
 testArray.push(3,4,5)
 
@@ -116,9 +104,9 @@ var checkValues = function(arr) {
     }
   }
 }
-console.log(checkValues(testArray))
+checkValues(testArray)
 
-// *** this is working
+
 // 4. Write a function which takes an array of integers and returns an array with any duplicate integers removed.
 
 var testArray = []
@@ -132,7 +120,6 @@ var noDuplicates = testArray.filter(function(element, index) {
 console.log(noDuplicates)
 
 
-//*** this works
 // 5. Write function that translates a text to Pig Latin, and another that translates back. English is translated to Pig Latin by taking the first letter of every word, moving it to the end of the word and adding "ay".
 var test = 'The quick brown fox'
 var splitStr = test.split(' ')
@@ -149,7 +136,7 @@ var toPigLatin = function(splitStr) {
     console.log(newStr)
   }
 }
-console.log(toPigLatin(splitStr))
+toPigLatin(splitStr)
 
 // converts pig latin to english
 var piggyTest = "hetay uickqay rownbay oxfay"
@@ -168,27 +155,56 @@ var toEnglish = function(splitPigStr) {
     console.log(englishWord)
   }
 }
-console.log(toEnglish(splitPigStr))
-*/
+toEnglish(splitPigStr)
 
-/*
+
+
 // 6. Write a function which takes in two arrays and determines if they contain the same number of the same values.
 // [], [] -> true
 // [2, 3, 4], [1, 2, 3] -> false
 // ["a", "c", "b"], ["a", "b", "c"] -> true
 // [1, 1, 1], [1, 1, 1, 1] -> false
 
+var array1 = [1, 1, 1]
+var array2 = [1, 1, 1, 1]
 
-
-
+var compareArrays = function(array1, array2) {
+  array1.sort()
+  array2.sort()
+  for(var i=0 ; i<array1.length ; i++) {
+    if(array1.length != array2.length) {
+      return false
+    } else if(array1[i] === array2[i]) {
+      console.log('array 1 and array2 contain the same number of the same values.')
+      return true
+    } else {
+      console.log(`the arrays don't match`)
+      return false
+    }
+  }
+}
+compareArrays(array1, array2)
 
 // 7. Write a function which takes in an array of numbers and a max cutoff value, and returns a new array with elements limited by the cutoff value.
 // [1,2,3,4,5,6,7,8], 4 -> [1,2,3,4,4,4,4,4]
 // [1,5,7,3,1,5,7], 3 -> [1,3,3,3,1,3,3]
 
+var test = [1,2,3,4,5,6,7,8]
+testArray = test.sort()
+var newArr = []
 
-
-
+var newArray = function(testArray, cutoffValue) {
+  for(var i=0 ; i<testArray.length ; i++) {
+    console.log(testArray[i])
+    if(i < cutoffValue) {
+      newArr.push(testArray[i])
+    } else {
+      newArr.push(cutoffValue)
+    }
+  }
+  console.log(newArr)
+}
+newArray(testArray, 4)
 
 
 // 8. Write a function which takes no input and returns an array of 10 distinct randomly generated integers between 1 and 100.
@@ -196,17 +212,42 @@ console.log(toEnglish(splitPigStr))
 // -> [48, 5, 32, 2, 10, 11, 34, 95, 82, 93] (good!)
 // -> [1, 1, 24, 63, 45, 84, 17, 11, 59, 13] (bad - duplicated number)
 
+// returns a number between 1 and 100
+var randoNumbo = function() {
+  return Math.floor(Math.random() *100) + 1
+}
 
+var output = []
+var distinctNumberArray = function() {
+  for(var i=0 ; i<10 ; i++) {
+    if(i !== randoNumbo) {
+      output.push(randoNumbo(i))
+      console.log(output)
+    } else {
+      output.push(i)
+      console.log(output)
+    }
+  }
+}
+distinctNumberArray()
 
 
 
 // 9. Write a function which takes two sorted lists and merges them into a new sorted list.
-//
+
 // [1,2,5,6,9], [3,4,5,10] -> [1,2,3,4,5,5,6,9,10]
 // [], [] -> []
 // [-1, 0, 1], [-2, 2] -> [-2, -1, 0, 1, 2]
+array1 = [-1, 0, 1]
+array2 = [-2, 2]
+combinedArray = []
 
-
+var mergeArrays = function(array1, array2) {
+  arrLen = array1.length + array2.length
+  var outputArr = combinedArray.concat(array1,array2).sort(function(a,b){return a-b})
+  console.log(outputArr)
+}
+mergeArrays(array1, array2)
 
 
 // 10. Write a function which accepts two arrays as input. The function should remove all the items from the shorter array, and add them to the end of the longer array. If both arrays are the same length, the function should do nothing. This function does not need to return a value.
@@ -219,16 +260,39 @@ console.log(toEnglish(splitPigStr))
 // console.log(animals) // ['cat', 'bat', 'dolphin', 'four', 'eleven']
 //
 // ```
+array1 = ['four', 'twenty four']
+array2 = ['cat', 'bat', 'dolphin']
+newArr = []
 
-
-
-
+var checkArrLen = function(arr1, arr2) {
+  if(arr1.length === arr2.length) {
+    console.log('array 1 length: ' + arr1.length)
+    console.log('array 2 length: ' + arr2.length)
+    console.log('the arrays are the same length')
+  } else {
+    if(arr1.length > arr2.length) {
+      // console.log('array 1 ' + arr1)
+      var concatArr = newArr.concat(arr1, arr2)
+      console.log('new array: ' + concatArr)
+    } else {
+      // console.log('array 2 ' + arr2)
+        var concatArr = newArr.concat(arr2, arr1)
+      console.log('new array: ' + concatArr)
+      return arr2
+    }
+  }
+}
+checkArrLen(array1, array2)
+*/
 
 // 11. Write a function that uses `Math.random()` to generate a random number between 0-1. Replace all the 3's with 8's, and replace all the 7's with 1's, then return this number. Note that this function should return a `number`, not a `string`.
+var randoNumbo = function() {
+  Math.random()
+}
 
 
 
-
+/*
 
 // 12. Write a function which accepts a sentence as a string, and returns the longest word in that sentence.
 //
@@ -273,7 +337,9 @@ console.log(toEnglish(splitPigStr))
 
 // 17. Write a function which returns a random integer from 1 to 10.
 
-
-
+var randoNumbo = function() {
+  return Math.floor(Math.random() * 11)
+}
+randoNumbo()
 
 */
